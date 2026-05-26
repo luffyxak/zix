@@ -1,0 +1,130 @@
+:root {
+  color-scheme: light dark;
+  --bg: #ffffff;
+  --bg-soft: #f6f7f9;
+  --border: #e4e7eb;
+  --text: #1c1f23;
+  --text-soft: #5b636e;
+  --accent: #2f80ed;
+  --accent-soft: #e8f0fe;
+  --code-bg: #f3f4f6;
+  --code-text: #1c1f23;
+  --t-c: #6a737d;
+  --t-s: #032f62;
+  --t-n: #005cc5;
+  --t-k: #d73a49;
+}
+[data-theme="dark"] {
+  --bg: #0f1115;
+  --bg-soft: #161a21;
+  --border: #2a2f3a;
+  --text: #e7eaee;
+  --text-soft: #98a2b3;
+  --accent: #66a8ff;
+  --accent-soft: #1d2a3f;
+  --code-bg: #161a21;
+  --code-text: #e7eaee;
+  --t-c: #8b95a3;
+  --t-s: #9ecbff;
+  --t-n: #79b8ff;
+  --t-k: #ffab70;
+}
+@media (prefers-color-scheme: dark) {
+  :root[data-theme="auto"] {
+    --bg: #0f1115; --bg-soft: #161a21; --border: #2a2f3a; --text: #e7eaee;
+    --text-soft: #98a2b3; --accent: #66a8ff; --accent-soft: #1d2a3f;
+    --code-bg: #161a21; --code-text: #e7eaee;
+    --t-c: #8b95a3; --t-s: #9ecbff; --t-n: #79b8ff; --t-k: #ffab70;
+  }
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; height: 100%; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+#zix-root { display: grid; grid-template-columns: 280px 1fr; height: 100vh; }
+@media (max-width: 720px) {
+  #zix-root { grid-template-columns: 1fr; grid-template-rows: auto 1fr; }
+  #zix-side { border-right: none; border-bottom: 1px solid var(--border); max-height: 40vh; overflow: auto; }
+}
+
+#zix-side {
+  border-right: 1px solid var(--border);
+  background: var(--bg-soft);
+  display: flex; flex-direction: column; min-height: 0;
+}
+#zix-head {
+  padding: 14px 16px; border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; gap: 8px;
+}
+#zix-title { font-weight: 600; font-size: 14px; flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+#zix-theme { background: transparent; color: var(--text-soft); border: 1px solid var(--border); border-radius: 6px; padding: 4px 8px; font-size: 12px; cursor: pointer; }
+#zix-theme:hover { color: var(--text); }
+#zix-search { padding: 10px 12px; }
+#zix-search input {
+  width: 100%; padding: 7px 10px; font-size: 13px;
+  border: 1px solid var(--border); border-radius: 6px; background: var(--bg); color: var(--text);
+}
+#zix-tree { flex: 1; overflow: auto; padding: 4px 0 12px; }
+.zix-node { display: block; padding: 4px 12px 4px 16px; cursor: pointer; color: var(--text); user-select: none; }
+.zix-node[data-depth="1"] { padding-left: 28px; }
+.zix-node[data-depth="2"] { padding-left: 40px; }
+.zix-node[data-depth="3"] { padding-left: 52px; }
+.zix-node[data-depth="4"] { padding-left: 64px; }
+.zix-node:hover { background: var(--accent-soft); }
+.zix-node.is-active { background: var(--accent-soft); color: var(--accent); }
+.zix-node.is-dir { color: var(--text-soft); font-weight: 500; }
+.zix-node .zix-icon { display: inline-block; width: 14px; margin-right: 6px; opacity: 0.7; }
+
+#zix-main { overflow: auto; padding: 28px 36px; min-width: 0; }
+#zix-main h1, #zix-main h2, #zix-main h3 { line-height: 1.25; }
+#zix-main pre {
+  background: var(--code-bg); color: var(--code-text);
+  padding: 14px 16px; border-radius: 8px; overflow: auto;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 13.5px;
+}
+#zix-main code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+#zix-main pre code { padding: 0; background: transparent; }
+#zix-main p > code, #zix-main li > code { background: var(--code-bg); padding: 1px 5px; border-radius: 4px; font-size: 0.92em; }
+.t-c { color: var(--t-c); font-style: italic; }
+.t-s { color: var(--t-s); }
+.t-n { color: var(--t-n); }
+.t-k { color: var(--t-k); }
+
+#zix-main img { max-width: 100%; border-radius: 6px; }
+#zix-main table { border-collapse: collapse; }
+#zix-main th, #zix-main td { border: 1px solid var(--border); padding: 6px 10px; }
+#zix-main blockquote { margin: 0; padding: 4px 14px; border-left: 3px solid var(--accent); color: var(--text-soft); }
+
+#zix-empty { color: var(--text-soft); padding: 60px 0; text-align: center; }
+
+#zix-lock {
+  position: fixed; inset: 0; display: flex; align-items: center; justify-content: center;
+  background: var(--bg);
+}
+#zix-lock-card {
+  width: min(380px, 92vw);
+  border: 1px solid var(--border); border-radius: 12px; padding: 26px;
+  background: var(--bg-soft);
+  text-align: center;
+}
+#zix-lock-card h2 { margin: 0 0 10px; font-size: 20px; }
+#zix-lock-card p { margin: 0 0 18px; color: var(--text-soft); font-size: 13.5px; }
+#zix-lock-card input {
+  width: 100%; padding: 10px 12px; font-size: 14px;
+  border: 1px solid var(--border); border-radius: 8px; background: var(--bg); color: var(--text);
+}
+#zix-lock-card button {
+  margin-top: 12px; width: 100%; padding: 10px; font-size: 14px; font-weight: 600;
+  background: var(--accent); color: white; border: 0; border-radius: 8px; cursor: pointer;
+}
+#zix-lock-error { color: #d23f3f; font-size: 13px; margin-top: 10px; min-height: 1.2em; }
+
+.zix-meta { color: var(--text-soft); font-size: 12px; margin: -10px 0 18px; }

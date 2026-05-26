@@ -1,0 +1,46 @@
+{
+  "name": "zix",
+  "version": "0.1.0",
+  "description": "Turn any folder into a single, self-contained, shareable HTML file. Optional client-side password protection.",
+  "type": "module",
+  "bin": {
+    "zix": "./src/cli.js"
+  },
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "files": [
+    "src",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "scripts": {
+    "test": "node --test --test-reporter=spec 'test/*.test.js'",
+    "smoke": "node ./src/cli.js pack ./examples/notes --out ./tmp/notes.zix.html",
+    "lint": "node -e \"console.log('no linter configured; relying on tests')\""
+  },
+  "engines": {
+    "node": ">=20.6.0"
+  },
+  "keywords": [
+    "cli",
+    "share",
+    "html",
+    "single-file",
+    "markdown",
+    "encryption",
+    "aes-gcm",
+    "static-site"
+  ],
+  "author": "Zix contributors",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/luffyxak/Zix.git"
+  },
+  "bugs": {
+    "url": "https://github.com/luffyxak/Zix/issues"
+  },
+  "homepage": "https://github.com/luffyxak/Zix#readme"
+}

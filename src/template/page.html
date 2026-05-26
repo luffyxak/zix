@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en" data-theme="__THEME__">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data:; font-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'self'">
+<meta name="referrer" content="no-referrer">
+<meta name="generator" content="Zix v__VERSION__">
+<title>__TITLE__ &middot; Zix</title>
+<style>__STYLES__</style>
+</head>
+<body>
+<noscript>This page needs JavaScript to render its contents.</noscript>
+<script id="zix-bundle" type="application/json">__BUNDLE__</script>
+<script>
+window.__ZIX__ = JSON.parse(document.getElementById('zix-bundle').textContent);
+</script>
+<script>__RUNTIME__</script>
+</body>
+</html>
